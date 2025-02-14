@@ -39,9 +39,10 @@ cmake --build . -- -j"$(nproc)"
  
 function install_borked3ds() {
       md_ret_files=(
-      #'build/bin/Release/borked3ds'
-      'build/bin/Release/borked3ds-qt'
+      'build/bin/Release/borked3ds'
+      'build/bin/Release/borked3ds-cli'
 	  'build/bin/Release/borked3ds-room'
+	  'build/bin/Release/tests'
  
 	        ''
       )
@@ -55,9 +56,10 @@ function configure_borked3ds() {
 	 local launch_prefix
    isPlatform "kms" && launch_prefix="XINIT-WMC:"
  
-    #addEmulator 0 "$md_id" "3ds" "$md_inst/borked3ds"
-	addEmulator 0 "$md_id-room" "3ds" "$md_inst/borked3ds-room"
-	addEmulator 1 "$md_id-tests" "3ds" "$md_inst/borked3ds-qt"
+    addEmulator 0 "$md_id" "3ds" "$md_inst/borked3ds"
+	addEmulator 1 "$md_id-room" "3ds" "$md_inst/borked3ds-room"
+	addEmulator 2 "$md_id-tests" "3ds" "$md_inst/borked3ds-cli"
+	addEmulator 3 "$md_id-tests" "3ds" "$md_inst/tests"
     addSystem "3ds" "3ds" ".3ds .zip .3dsx .elf .axf .cci ,cxi .app"
  
  
