@@ -58,7 +58,7 @@ function configure_borked3ds() {
  
     addEmulator 0 "$md_id" "3ds" "$md_inst/borked3ds"
 	addEmulator 1 "$md_id-room" "3ds" "$md_inst/borked3ds-room"
-	addEmulator 2 "$md_id-tests" "3ds" "$md_inst/borked3ds-cli"
+	addEmulator 2 "$md_id-cli" "3ds" "$md_inst/borked3ds-cli"
 	addEmulator 3 "$md_id-tests" "3ds" "$md_inst/tests"
     addSystem "3ds" "3ds" ".3ds .zip .3dsx .elf .axf .cci ,cxi .app"
  
