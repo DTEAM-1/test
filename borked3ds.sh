@@ -5,7 +5,7 @@
  
 rp_module_id="borked3ds"
 rp_module_desc="3DS Emulator borked3ds"
-rp_module_help="ROM Extension: .3ds\n\nCopy your 3DS roms to $romdir/3ds"
+rp_module_help="ROM Extension: .3ds .3dsx .elf .axf .cci ,cxi .app\n\nCopy your 3DS roms to $romdir/3ds"
 rp_module_licence="GPL2 https://github.com/Borked3DS/Borked3DS/blob/master/license.txt"
 rp_module_section="exp"
 rp_module_flags=" "
@@ -17,7 +17,7 @@ function depends_borked3ds() {
     fi
  
     # Additional libraries required for running
-local depends=(build-essential cmake clang clang-format libc++-dev libsdl2-dev libssl-dev qt6-l10n-tools qt6-tools-dev qt6-tools-dev-tools  qt6-base-dev qt6-base-private-dev libxcb-cursor-dev libvulkan-dev qt6-multimedia-dev libqt6sql6 libqt6core6 libasound2-dev xorg-dev libx11-dev libxext-dev libpipewire-0.3-dev libsndio-dev libfdk-aac-dev ffmpeg libgl-dev libswscale-dev libavformat-dev libavcodec-dev libavdevice-dev libglut3.12 libglut-dev freeglut3-dev mesa-vulkan-drivers) 
+local depends=(build-essential cmake clang clang-format libc++-dev libsdl2-dev libssl-dev qt6-l10n-tools qt6-tools-dev qt6-tools-dev-tools  qt6-base-dev qt6-base-private-dev libxcb-cursor-dev libvulkan-dev qt6-multimedia-dev libqt6sql6 libqt6core6 libasound2-dev xorg-dev libx11-dev libxext-dev libpipewire-0.3-dev libsndio-dev libfdk-aac-dev ffmpeg libgl-dev libswscale-dev libavformat-dev libavcodec-dev libavdevice-dev libglut3.12 libglut-dev freeglut3-dev mesa-vulkan-drivers libinput-dev) 
  
 		getDepends "${depends[@]}"
  
@@ -52,15 +52,15 @@ function install_borked3ds() {
 function configure_borked3ds() {
  
     mkRomDir "3ds"
-	ensureSystemretroconfig "3ds"
-	 local launch_prefix
-   isPlatform "kms" && launch_prefix="XINIT-WMC:"
+    ensureSystemretroconfig "3ds"
+    local launch_prefix
+    isPlatform "kms" && launch_prefix="XINIT-WMC:"
  
-    addEmulator 0 "$md_id" "3ds" "$md_inst/borked3ds"
-	addEmulator 1 "$md_id-room" "3ds" "$md_inst/borked3ds-room"
-	addEmulator 2 "$md_id-cli" "3ds" "$md_inst/borked3ds-cli"
-	addEmulator 3 "$md_id-tests" "3ds" "$md_inst/tests"
-    addSystem "3ds" "3ds" ".3ds .zip .3dsx .elf .axf .cci ,cxi .app"
+    addEmulator 0 "$md_id" "3ds" "$launch_prefix$md_inst/borked3ds"
+	addEmulator 1 "$md_id-room" "3ds" "$launch_prefix$md_inst/borked3ds-room"
+	addEmulator 2 "$md_id-cli" "3ds" "$launch_prefix$md_inst/borked3ds-cli"
+	addEmulator 3 "$md_id-tests" "3ds" "$launch_prefix$md_inst/tests"
+    addSystem "3ds" "3ds" ".3ds .3dsx .elf .axf .cci ,cxi .app"
  
  
 }
