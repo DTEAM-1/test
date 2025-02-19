@@ -40,9 +40,9 @@ cmake --build . -- -j"$(nproc)"
 function install_borked3ds() {
       md_ret_files=(
       'build/bin/Release/borked3ds'
-      'build/bin/Release/borked3ds-cli'
-	  'build/bin/Release/borked3ds-room'
-	  'build/bin/Release/tests'
+      #'build/bin/Release/borked3ds-cli'
+	  #'build/bin/Release/borked3ds-room'
+	  #'build/bin/Release/tests'
  
 	        ''
       )
@@ -55,11 +55,11 @@ function configure_borked3ds() {
     ensureSystemretroconfig "3ds"
     local launch_prefix
     isPlatform "kms" && launch_prefix="XINIT-WMC:"
- 
-    addEmulator 0 "$md_id" "3ds" "$launch_prefix$md_inst/borked3ds"
-	addEmulator 1 "$md_id-room" "3ds" "$launch_prefix$md_inst/borked3ds-room"
-	addEmulator 2 "$md_id-cli" "3ds" "$launch_prefix$md_inst/borked3ds-cli"
-	addEmulator 3 "$md_id-tests" "3ds" "$launch_prefix$md_inst/tests"
+	 addEmulator 0 "$md_id-ui" "3ds" "$launch_prefix$md_inst/borked3ds"
+	 addEmulator 1 "$md_id-roms" "3ds" "$launch_prefix$md_inst/borked3ds %ROM%"
+	#addEmulator 1 "$md_id-room" "3ds" "$launch_prefix$md_inst/borked3ds-room"
+	#addEmulator 2 "$md_id-cli" "3ds" "$launch_prefix$md_inst/borked3ds-cli"
+	#addEmulator 3 "$md_id-tests" "3ds" "$launch_prefix$md_inst/tests"
     addSystem "3ds" "3ds" ".3ds .3dsx .elf .axf .cci ,cxi .app"
  
  
