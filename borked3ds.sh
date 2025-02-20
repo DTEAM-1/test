@@ -24,7 +24,7 @@ local depends=(build-essential cmake clang clang-format libc++-dev libsdl2-dev l
 }
  # openssl
 function sources_borked3ds() {
-    gitPullOrClone "$md_build" https://github.com/rtiangha/Borked3DS.git
+    gitPullOrClone "$md_build" https://github.com/Borked3DS/Borked3DS.git
 }
  
 function build_borked3ds() {
