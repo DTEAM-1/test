@@ -23,8 +23,12 @@ local depends=(build-essential cmake clang clang-format libc++-dev libsdl2-dev l
  
 }
  # openssl
-function sources_borked3ds() {
-   gitPullOrClone "$md_build" https://github.com/rtiangha/Borked3DS.git vk-regression 
+function sources_borked3ds() { 
+   #gitPullOrClone "$md_build" https://github.com/rtiangha/Borked3DS.git vk-regression 
+   gitPullOrClone "$md_build" https://github.com/borked3ds/Borked3DS.git
+   #gitPullOrClone "$md_build" https://github.com/rtiangha/Borked3DS.git vulkan-validation
+   #gitPullOrClone "$md_build" https://github.com/rtiangha/Borked3DS.git mobile-gpus
+   #gitPullOrClone "$md_build" https://github.com/rtiangha/Borked3DS.git gpu-revert
 }
  
 function build_borked3ds() {
