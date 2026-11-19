@@ -22,13 +22,28 @@
 # game controller mapping MAME will get through runcommand: SDL2's built-in
 # database plus /opt/retropie/configs/all/sdl2_gamecontrollerdb.txt.
 #
-# Two ways to use it:
-#  1. Automatic: copy it to
+# The script can be kept anywhere, for example in a RetroPie-Setup ext
+# module (RetroPie-Setup/ext/<repo>/scriptmodules/...). EmulationStation only
+# runs input scripts from its configscripts folder, so "install" copies it there:
+#
+#   sudo bash mamehotkeys.sh install
+#       copies itself to
 #       /opt/retropie/supplementary/emulationstation/scripts/configscripts/
-#     It then runs each time a gamepad is configured in EmulationStation
-#     (only for the gamepad that MAME will see as "Joy 1").
-#  2. By hand, for gamepads already configured (player 1 gamepad connected):
-#       bash mamehotkeys.sh
+#       (from then on it runs each time a gamepad is configured in
+#       EmulationStation, only for the gamepad MAME sees as "Joy 1"),
+#       then applies the hotkeys now for the player 1 gamepad.
+#
+#   sudo bash mamehotkeys.sh remove
+#       takes the Select combos out of default.cfg (keyboard keys stay)
+#       and deletes the copy in configscripts.
+#
+#   bash mamehotkeys.sh            (or: bash mamehotkeys.sh apply)
+#       applies the hotkeys now, nothing installed.
+#
+# install and remove need root; default.cfg is always written as the normal
+# RetroPie user (SUDO_USER, or the owner of /opt/retropie/configs/all).
+# MAME must not be running (it rewrites default.cfg when it exits).
+# The first run keeps a copy of the original file: default.cfg.before-hotkeys
 #
 # Needs: python3, libSDL2 (both are on every RetroPie install).
 # =============================================================================
@@ -43,27 +58,80 @@ function onstart_mamehotkeys_joystick() {
 }
 
 function onend_mamehotkeys_joystick() {
-    _run_mamehotkeys "$home/.emulationstation/es_temporaryinput.cfg" "$DEVICE_GUID"
+    _run_mamehotkeys "$home/.emulationstation/es_temporaryinput.cfg" "$DEVICE_GUID" apply
 }
 
 function _run_mamehotkeys() {
-    local es_file="$1" guid="$2"
+    local es_file="$1" guid="$2" mode="${3:-apply}"
     local cfgdir="/opt/retropie/configs"
     local ini="$cfgdir/mame/mame.ini"
-    local mamecfg
+    local mamecfg py ret
     mamecfg=$(awk '$1=="cfg_directory"{print $2}' "$ini" 2>/dev/null)
     [[ -z "$mamecfg" ]] && mamecfg="$home/RetroPie/roms/mame/cfg"
-    local py="/tmp/mamehotkeys.py"
+    py=$(mktemp --suffix=.py) || return 1
     _mamehotkeys_python > "$py"
-    python3 -I "$py" "$mamecfg/default.cfg" "$es_file" "$cfgdir/all/sdl2_gamecontrollerdb.txt" "$guid"
+    python3 -I "$py" "$mamecfg/default.cfg" "$es_file" "$cfgdir/all/sdl2_gamecontrollerdb.txt" "$guid" "$mode"
+    ret=$?
     rm -f "$py"
+    return $ret
 }
 
 function _mamehotkeys_python() {
 cat << 'EOF'
 import sys, os, ctypes, xml.etree.ElementTree as ET
 
-CFG, ES, SDLDB, GUID = sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4]
+CFG, ES, SDLDB, GUID, MODE = sys.argv[1:6]
+
+COMBOS = {"UI_CANCEL": "start", "UI_SAVE_STATE_QUICK": "rightshoulder",
+          "UI_LOAD_STATE_QUICK": "leftshoulder", "UI_MENU": "x",
+          "UI_SOFT_RESET": "b", "UI_SNAPSHOT": "leftstick", "UI_RECORD_AVI": "rightstick"}
+# MAME 0.289 keyboard defaults (src/emu/inpttype.ipp), kept or restored
+KEYS = {"UI_CANCEL": "KEYCODE_ESC", "UI_MENU": "KEYCODE_TAB",
+        "UI_SAVE_STATE_QUICK": "KEYCODE_F6 KEYCODE_LSHIFT OR KEYCODE_F6 KEYCODE_RSHIFT",
+        "UI_LOAD_STATE_QUICK": "KEYCODE_F7 KEYCODE_LSHIFT OR KEYCODE_F7 KEYCODE_RSHIFT",
+        "UI_SOFT_RESET": "KEYCODE_F3 NOT KEYCODE_LSHIFT NOT KEYCODE_RSHIFT",
+        "UI_SNAPSHOT": "KEYCODE_F12 NOT KEYCODE_LSHIFT",
+        "UI_RECORD_AVI": "KEYCODE_F12 KEYCODE_LSHIFT KEYCODE_LCONTROL"}
+
+def split_alts(text):
+    return [" ".join(a.split()) for a in " ".join((text or "").split()).split(" OR ") if a.strip()]
+
+# ----------------------------------------------- remove: take the combos out
+if MODE == "unapply":
+    if not os.path.isfile(CFG):
+        print("mamehotkeys: no default.cfg, nothing to remove"); sys.exit(0)
+    tree = ET.parse(CFG)
+    root = tree.getroot()
+    changed = False
+    for sysd in root.findall("system"):
+        if sysd.get("name") != "default":
+            continue
+        for inp in sysd.findall("input"):
+            for p in list(inp.findall("port")):
+                if p.get("type") not in COMBOS:
+                    continue
+                s = p.find("newseq")
+                if s is None:
+                    continue
+                alts = split_alts(s.text)
+                # our combos: exactly two player 1 gamepad buttons held together
+                keep = [a for a in alts
+                        if not (len(a.split()) == 2 and all(t.startswith("JOYCODE_1_") for t in a.split()))]
+                if keep == alts:
+                    continue
+                changed = True
+                if not keep or keep == split_alts(KEYS[p.get("type")]):
+                    inp.remove(p)               # back to MAME's default keys
+                else:
+                    s.text = " OR ".join(keep)
+                print(f"  {p.get('type'):20s} Select combo removed")
+    if changed:
+        ET.indent(tree, space="    ")
+        tree.write(CFG, encoding="UTF-8", xml_declaration=True)
+        print(f"mamehotkeys: combos removed from {CFG}")
+    else:
+        print("mamehotkeys: no Select combos found, nothing to remove")
+    sys.exit(0)
 
 # ---------------------------------------------------------------- SDL2 mapping
 # Same environment as runcommand: our database first (SDL_GAMECONTROLLERCONFIG)
@@ -108,7 +176,8 @@ def sdl_query(guid):
 mapping, first = sdl_query(GUID)
 guid = GUID or first
 if not guid:
-    sys.exit("mamehotkeys: no gamepad connected, nothing done")
+    print("mamehotkeys: no gamepad connected, nothing done (connect it and run again)")
+    sys.exit(0)
 if GUID and first and GUID != first:
     print(f"mamehotkeys: this gamepad is not MAME's Joy 1 (player 1), hotkeys left unchanged")
     sys.exit(0)
@@ -203,19 +272,8 @@ if roles:
 
 hot = tok.get("back")
 if not hot:
-    sys.exit("mamehotkeys: no Select button found for this gamepad, nothing done")
-
-# ------------------------------------------------------------- combos to write
-COMBOS = {"UI_CANCEL": "start", "UI_SAVE_STATE_QUICK": "rightshoulder",
-          "UI_LOAD_STATE_QUICK": "leftshoulder", "UI_MENU": "x",
-          "UI_SOFT_RESET": "b", "UI_SNAPSHOT": "leftstick", "UI_RECORD_AVI": "rightstick"}
-# MAME 0.289 keyboard defaults (src/emu/inpttype.ipp), kept or restored
-KEYS = {"UI_CANCEL": "KEYCODE_ESC", "UI_MENU": "KEYCODE_TAB",
-        "UI_SAVE_STATE_QUICK": "KEYCODE_F6 KEYCODE_LSHIFT OR KEYCODE_F6 KEYCODE_RSHIFT",
-        "UI_LOAD_STATE_QUICK": "KEYCODE_F7 KEYCODE_LSHIFT OR KEYCODE_F7 KEYCODE_RSHIFT",
-        "UI_SOFT_RESET": "KEYCODE_F3 NOT KEYCODE_LSHIFT NOT KEYCODE_RSHIFT",
-        "UI_SNAPSHOT": "KEYCODE_F12 NOT KEYCODE_LSHIFT",
-        "UI_RECORD_AVI": "KEYCODE_F12 KEYCODE_LSHIFT KEYCODE_LCONTROL"}
+    print("mamehotkeys: no Select button configured for this gamepad, nothing done")
+    sys.exit(0)
 
 # ------------------------------------------------------------ edit default.cfg
 os.makedirs(os.path.dirname(CFG), exist_ok=True)
@@ -284,12 +342,55 @@ print(f"mamehotkeys: written to {CFG}")
 EOF
 }
 
-# run by hand: bash mamehotkeys.sh
+# ---------------------------------------------------------------- run by hand
 if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
-    home="$(eval echo ~"$(id -un)")"
+    self="$(readlink -f "$0")"
+    dest="/opt/retropie/supplementary/emulationstation/scripts/configscripts/mamehotkeys.sh"
+    mode="${1:-apply}"
+    case "$mode" in
+        apply|unapply|install|remove) ;;
+        *) echo "usage: bash mamehotkeys.sh [apply]  |  sudo bash mamehotkeys.sh install|remove"
+           exit 1 ;;
+    esac
     if pgrep -x mame > /dev/null; then
         echo "mamehotkeys: quit MAME first (it rewrites default.cfg when it exits)"
         exit 1
     fi
-    _run_mamehotkeys "/opt/retropie/configs/all/emulationstation/es_input.cfg" ""
+
+    if [[ $EUID -eq 0 ]]; then
+        # root: copy/delete the configscript, edit default.cfg as the RetroPie user
+        rpuser="$SUDO_USER"
+        [[ -z "$rpuser" || "$rpuser" == root ]] && rpuser="$(stat -c %U /opt/retropie/configs/all 2>/dev/null)"
+        if [[ -z "$rpuser" || "$rpuser" == root || "$rpuser" == UNKNOWN ]]; then
+            echo "mamehotkeys: can't find the RetroPie user, nothing done"
+            exit 1
+        fi
+        case "$mode" in
+            install)
+                if [[ ! -d "${dest%/*}" ]]; then
+                    echo "mamehotkeys: EmulationStation is not installed, nothing done"
+                    exit 1
+                fi
+                [[ "$self" != "$dest" ]] && install -m 644 "$self" "$dest"
+                echo "mamehotkeys: installed in ${dest%/*}"
+                sudo -u "$rpuser" -H bash "$dest" apply
+                ;;
+            remove)
+                sudo -u "$rpuser" -H bash "$self" unapply
+                rm -f "$dest"
+                echo "mamehotkeys: removed from ${dest%/*}"
+                ;;
+            *)
+                sudo -u "$rpuser" -H bash "$self" "$mode"
+                ;;
+        esac
+        exit $?
+    fi
+
+    if [[ "$mode" == install || "$mode" == remove ]]; then
+        echo "mamehotkeys: '$mode' needs root: sudo bash $0 $mode"
+        exit 1
+    fi
+    home="$(eval echo ~"$(id -un)")"
+    _run_mamehotkeys "/opt/retropie/configs/all/emulationstation/es_input.cfg" "" "$mode"
 fi
