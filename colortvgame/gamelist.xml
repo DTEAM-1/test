@@ -1,0 +1,273 @@
+<?xml version="1.0"?>
+<gameList>
+	<game>
+		<path>./tennis_original_singles.ctg</path>
+		<name>Tennis Original (Singles)</name>
+		<desc>Light Tennis, the game at the heart of Nintendo's first home consoles in 1977. Two players face each other across a brown court with a dashed net in the middle; the net is only decorative, so the ball flies straight over it. Turn the dial to move your paddle up and down and return the ball: whoever misses gives the point away. Speed (high/low) and the size of each player's paddle (large/small) can be set, as with the switches on the original console, and the winning score from 5 to 30 (15 by default). Play against a friend or against the computer (Easy, Normal or Hard).</desc>
+		<image>./media/emulationstation/tennis_original_singles.png</image>
+		<video>./media/emulationstation/tennis_original_singles.mp4</video>
+		<marquee>./media/emulationstation/tennis_original_singles_logo.png</marquee>
+		<rating>0.70</rating>
+		<releasedate>19770601T000000</releasedate>
+		<developer>Nintendo R&amp;D2 / Mitsubishi Electronics</developer>
+		<publisher>Nintendo</publisher>
+		<genre>Sports</genre>
+		<players>1-2</players>
+		<playcount>1</playcount>
+		<lastplayed>20261119T174814</lastplayed>
+	</game>
+	<game>
+		<path>./game_selector.ctg</path>
+		<name>Game Selector (All Games)</name>
+		<desc>Opens the simulator's built-in menu with all 16 games, animated demo previews and game settings. Nintendo entered home video games with the Color TV-Game 6 (June 1, 1977, 9,800 yen), developed with Mitsubishi Electronics, followed a week later by the Color TV-Game 15 (15,000 yen), which added detachable controllers and more variations; each sold about one million units in Japan. Color TV-Game Simulator by Dimitri (d-cglt) recreates these games from scratch, with no ROM: it is a simulation, so gameplay and presentation are approximations of the original hardware.</desc>
+		<image>./media/emulationstation/game_selector.png</image>
+		<video>./media/emulationstation/game_selector.mp4</video>
+		<marquee>./media/emulationstation/game_selector_logo.png</marquee>
+		<releasedate>19770601T000000</releasedate>
+		<developer>Nintendo R&amp;D2 / Mitsubishi Electronics</developer>
+		<publisher>Nintendo</publisher>
+		<genre>Sports</genre>
+		<players>1-2</players>
+		<playcount>1</playcount>
+		<lastplayed>20261119T180623</lastplayed>
+	</game>
+	<game>
+		<path>./hockey_original_doubles.ctg</path>
+		<name>Hockey Original (Doubles)</name>
+		<desc>Hockey with goal mouths and an open centre, played in doubles. The paddles are spread across the rink in alternating order, player 1, player 2, player 1, player 2, like a table football line-up, so each player both attacks and defends. Speed (high/low) and the size of each player's paddle (large/small) can be set, as with the switches on the original console, and the winning score from 5 to 30 (15 by default). Play against a friend or against the computer (Easy, Normal or Hard).</desc>
+		<image>./media/emulationstation/hockey_original_doubles.png</image>
+		<video>./media/emulationstation/hockey_original_doubles.mp4</video>
+		<marquee>./media/emulationstation/hockey_original_doubles_logo.png</marquee>
+		<rating>0.55</rating>
+		<releasedate>19770601T000000</releasedate>
+		<developer>Nintendo R&amp;D2 / Mitsubishi Electronics</developer>
+		<publisher>Nintendo</publisher>
+		<genre>Sports</genre>
+		<players>1-2</players>
+		<playcount>1</playcount>
+		<lastplayed>20261119T181352</lastplayed>
+	</game>
+	<game>
+		<path>./hockey_original_singles.ctg</path>
+		<name>Hockey Original (Singles)</name>
+		<desc>Light Tennis turned into hockey on a green rink. Walls close both ends of the field except for a goal mouth in the middle: rebound the ball off the walls and slip it into your opponent's goal while you guard your own. With no obstacle in the centre, it is the most direct of the hockey games. Speed (high/low) and the size of each player's paddle (large/small) can be set, as with the switches on the original console, and the winning score from 5 to 30 (15 by default). Play against a friend or against the computer (Easy, Normal or Hard).</desc>
+		<image>./media/emulationstation/hockey_original_singles.png</image>
+		<video>./media/emulationstation/hockey_original_singles.mp4</video>
+		<marquee>./media/emulationstation/hockey_original_singles_logo.png</marquee>
+		<rating>0.60</rating>
+		<releasedate>19770601T000000</releasedate>
+		<developer>Nintendo R&amp;D2 / Mitsubishi Electronics</developer>
+		<publisher>Nintendo</publisher>
+		<genre>Sports</genre>
+		<players>1-2</players>
+		<playcount>1</playcount>
+		<lastplayed>20261119T181245</lastplayed>
+	</game>
+	<game>
+		<path>./hockey_variant_doubles.ctg</path>
+		<name>Hockey Variant (Doubles)</name>
+		<desc>Hockey with the opening and closing centre barrier, played in doubles with the paddles alternating across the rink. The busiest field of the collection, with walls, goals, a barrier and four paddles. Speed (high/low) and the size of each player's paddle (large/small) can be set, as with the switches on the original console, and the winning score from 5 to 30 (15 by default). Play against a friend or against the computer (Easy, Normal or Hard).</desc>
+		<image>./media/emulationstation/hockey_variant_doubles.png</image>
+		<video>./media/emulationstation/hockey_variant_doubles.mp4</video>
+		<marquee>./media/emulationstation/hockey_variant_doubles_logo.png</marquee>
+		<rating>0.60</rating>
+		<releasedate>19770608T000000</releasedate>
+		<developer>Nintendo R&amp;D2 / Mitsubishi Electronics</developer>
+		<publisher>Nintendo</publisher>
+		<genre>Sports</genre>
+		<players>1-2</players>
+		<playcount>1</playcount>
+		<lastplayed>20261119T181711</lastplayed>
+	</game>
+	<game>
+		<path>./hockey_variant_singles.ctg</path>
+		<name>Hockey Variant (Singles)</name>
+		<desc>A tactical Color TV-Game 15 hockey variation with a barrier across the centre of the rink. When the ball bounces off an end wall the centre opening closes, and it only reopens after the ball hits the closed centre line and comes back to a paddle. Timing your shots around the barrier is the key to scoring. Speed (high/low) and the size of each player's paddle (large/small) can be set, as with the switches on the original console, and the winning score from 5 to 30 (15 by default). Play against a friend or against the computer (Easy, Normal or Hard).</desc>
+		<image>./media/emulationstation/hockey_variant_singles.png</image>
+		<video>./media/emulationstation/hockey_variant_singles.mp4</video>
+		<marquee>./media/emulationstation/hockey_variant_singles_logo.png</marquee>
+		<rating>0.65</rating>
+		<releasedate>19770608T000000</releasedate>
+		<developer>Nintendo R&amp;D2 / Mitsubishi Electronics</developer>
+		<publisher>Nintendo</publisher>
+		<genre>Sports</genre>
+		<players>1-2</players>
+		<playcount>1</playcount>
+		<lastplayed>20261119T181529</lastplayed>
+	</game>
+	<game>
+		<path>./tennis_original_doubles.ctg</path>
+		<name>Tennis Original (Doubles)</name>
+		<desc>The doubles version of the original Light Tennis court, with the same decorative dashed net. Doubles: each player turns one dial to move two linked paddles at once, one near the goal and one further up the field, which makes rallies faster and more chaotic. A ball coming from behind slips through your front paddle, so the back one has to cover it. Speed (high/low) and the size of each player's paddle (large/small) can be set, as with the switches on the original console, and the winning score from 5 to 30 (15 by default). Play against a friend or against the computer (Easy, Normal or Hard).</desc>
+		<image>./media/emulationstation/tennis_original_doubles.png</image>
+		<video>./media/emulationstation/tennis_original_doubles.mp4</video>
+		<marquee>./media/emulationstation/tennis_original_doubles_logo.png</marquee>
+		<rating>0.60</rating>
+		<releasedate>19770601T000000</releasedate>
+		<developer>Nintendo R&amp;D2 / Mitsubishi Electronics</developer>
+		<publisher>Nintendo</publisher>
+		<genre>Sports</genre>
+		<players>1-2</players>
+		<playcount>1</playcount>
+		<lastplayed>20261119T180726</lastplayed>
+	</game>
+	<game>
+		<path>./tennis_variant_doubles.ctg</path>
+		<name>Tennis Variant (Doubles)</name>
+		<desc>Tennis with the red and green deflector blocks in mid-court, played in doubles. Doubles: each player turns one dial to move two linked paddles at once, one near the goal and one further up the field, which makes rallies faster and more chaotic. Speed (high/low) and the size of each player's paddle (large/small) can be set, as with the switches on the original console, and the winning score from 5 to 30 (15 by default). Play against a friend or against the computer (Easy, Normal or Hard).</desc>
+		<image>./media/emulationstation/tennis_variant_doubles.png</image>
+		<video>./media/emulationstation/tennis_variant_doubles.mp4</video>
+		<marquee>./media/emulationstation/tennis_variant_doubles_logo.png</marquee>
+		<rating>0.55</rating>
+		<releasedate>19770608T000000</releasedate>
+		<developer>Nintendo R&amp;D2 / Mitsubishi Electronics</developer>
+		<publisher>Nintendo</publisher>
+		<genre>Sports</genre>
+		<players>1-2</players>
+		<playcount>1</playcount>
+		<lastplayed>20261119T181116</lastplayed>
+	</game>
+	<game>
+		<path>./tennis_variant_singles.ctg</path>
+		<name>Tennis Variant (Singles)</name>
+		<desc>A Color TV-Game 15 variation of Light Tennis. The centre of the court is filled with staggered red and green blocks: a red block sends a descending ball back up and a green block sends a rising ball back down, so the ball can change direction in mid-court and catch the other player off guard. Speed (high/low) and the size of each player's paddle (large/small) can be set, as with the switches on the original console, and the winning score from 5 to 30 (15 by default). Play against a friend or against the computer (Easy, Normal or Hard).</desc>
+		<image>./media/emulationstation/tennis_variant_singles.png</image>
+		<video>./media/emulationstation/tennis_variant_singles.mp4</video>
+		<marquee>./media/emulationstation/tennis_variant_singles_logo.png</marquee>
+		<rating>0.60</rating>
+		<releasedate>19770608T000000</releasedate>
+		<developer>Nintendo R&amp;D2 / Mitsubishi Electronics</developer>
+		<publisher>Nintendo</publisher>
+		<genre>Sports</genre>
+		<players>1-2</players>
+		<playcount>2</playcount>
+		<lastplayed>20261119T180958</lastplayed>
+	</game>
+	<game>
+		<path>./pingpong_doubles.ctg</path>
+		<name>Ping-Pong (Doubles)</name>
+		<desc>Side-view table tennis played in doubles. Doubles: each player turns one dial to move two linked paddles at once, one near the goal and one further up the field, which makes rallies faster and more chaotic. Speed (high/low) and the size of each player's paddle (large/small) can be set, as with the switches on the original console, and the winning score from 5 to 30 (15 by default). Play against a friend or against the computer (Easy, Normal or Hard).</desc>
+		<image>./media/emulationstation/pingpong_doubles.png</image>
+		<video>./media/emulationstation/pingpong_doubles.mp4</video>
+		<marquee>./media/emulationstation/pingpong_doubles_logo.png</marquee>
+		<rating>0.55</rating>
+		<releasedate>19770608T000000</releasedate>
+		<developer>Nintendo R&amp;D2 / Mitsubishi Electronics</developer>
+		<publisher>Nintendo</publisher>
+		<genre>Sports</genre>
+		<players>1-2</players>
+		<playcount>1</playcount>
+		<lastplayed>20261119T182852</lastplayed>
+	</game>
+	<game>
+		<path>./pingpong_singles.ctg</path>
+		<name>Ping-Pong (Singles)</name>
+		<desc>Table tennis seen from the side, exclusive to the Color TV-Game 15. A short net stands on the table: hit the ball over it and make your opponent miss. Above the net, a rising ball can suddenly be pushed back down, which gives the game a different rhythm from the other rally games. Speed (high/low) and the size of each player's paddle (large/small) can be set, as with the switches on the original console, and the winning score from 5 to 30 (15 by default). Play against a friend or against the computer (Easy, Normal or Hard).</desc>
+		<image>./media/emulationstation/pingpong_singles.png</image>
+		<video>./media/emulationstation/pingpong_singles.mp4</video>
+		<marquee>./media/emulationstation/pingpong_singles_logo.png</marquee>
+		<rating>0.60</rating>
+		<releasedate>19770608T000000</releasedate>
+		<developer>Nintendo R&amp;D2 / Mitsubishi Electronics</developer>
+		<publisher>Nintendo</publisher>
+		<genre>Sports</genre>
+		<players>1-2</players>
+		<playcount>2</playcount>
+		<lastplayed>20261119T182752</lastplayed>
+	</game>
+	<game>
+		<path>./racing112.ctg</path>
+		<name>Racing 112</name>
+		<desc>Released in June 1978 as the third Color TV-Game, Racing 112 was a bigger console with a detachable steering wheel and a top-down racing game in the style of Taito's Speed Race; its settings, such as playfield width and opponent speed, added up to 112 combinations. The simulator includes a one-player prototype: steer along a wide road, avoid the other cars and shift between low, medium and high speed with L2 and R2. Gameplay is approximate and still in development.</desc>
+		<image>./media/emulationstation/racing112.png</image>
+		<video>./media/emulationstation/racing112.mp4</video>
+		<marquee>./media/emulationstation/racing112_logo.png</marquee>
+		<rating>0.60</rating>
+		<releasedate>19780608T000000</releasedate>
+		<developer>Nintendo R&amp;D2</developer>
+		<publisher>Nintendo</publisher>
+		<genre>Racing</genre>
+		<playcount>1</playcount>
+		<lastplayed>20261119T185208</lastplayed>
+	</game>
+	<game>
+		<path>./shooting.ctg</path>
+		<name>Shooting Game</name>
+		<desc>The only non-rally game of the Color TV-Game 15, and the reason the console has an orange fire button. The left player moves the gun up and down and shoots, while the right player steers the blinking target with the other dial; the simulator can also move the target automatically for solo play. Counters show shots and hits, and a round lasts 15 shots (5 to 30 in the simulator).</desc>
+		<image>./media/emulationstation/shooting.png</image>
+		<video>./media/emulationstation/shooting.mp4</video>
+		<marquee>./media/emulationstation/shooting_logo.png</marquee>
+		<rating>0.50</rating>
+		<releasedate>19770608T000000</releasedate>
+		<developer>Nintendo R&amp;D2 / Mitsubishi Electronics</developer>
+		<publisher>Nintendo</publisher>
+		<genre>Shooter</genre>
+		<players>1-2</players>
+		<playcount>2</playcount>
+		<lastplayed>20261119T185102</lastplayed>
+	</game>
+	<game>
+		<path>./volleyball_original_doubles.ctg</path>
+		<name>Volleyball Original (Doubles)</name>
+		<desc>Volleyball with the unpredictable centre line, played in doubles. Doubles: each player turns one dial to move two linked paddles at once, one near the goal and one further up the field, which makes rallies faster and more chaotic. Speed (high/low) and the size of each player's paddle (large/small) can be set, as with the switches on the original console, and the winning score from 5 to 30 (15 by default). Play against a friend or against the computer (Easy, Normal or Hard).</desc>
+		<image>./media/emulationstation/volleyball_original_doubles.png</image>
+		<video>./media/emulationstation/volleyball_original_doubles.mp4</video>
+		<marquee>./media/emulationstation/volleyball_original_doubles_logo.png</marquee>
+		<rating>0.50</rating>
+		<releasedate>19770601T000000</releasedate>
+		<developer>Nintendo R&amp;D2 / Mitsubishi Electronics</developer>
+		<publisher>Nintendo</publisher>
+		<genre>Sports</genre>
+		<players>1-2</players>
+		<playcount>1</playcount>
+		<lastplayed>20261119T182427</lastplayed>
+	</game>
+	<game>
+		<path>./volleyball_original_singles.ctg</path>
+		<name>Volleyball Original (Singles)</name>
+		<desc>Light Tennis in a volleyball style on a blue court. The centre line acts like a net: as the ball crosses it, it can suddenly change vertical direction, so a sure return can turn into a point for the other side. Keep your paddle moving and react fast. Speed (high/low) and the size of each player's paddle (large/small) can be set, as with the switches on the original console, and the winning score from 5 to 30 (15 by default). Play against a friend or against the computer (Easy, Normal or Hard).</desc>
+		<image>./media/emulationstation/volleyball_original_singles.png</image>
+		<video>./media/emulationstation/volleyball_original_singles.mp4</video>
+		<marquee>./media/emulationstation/volleyball_original_singles_logo.png</marquee>
+		<rating>0.55</rating>
+		<releasedate>19770601T000000</releasedate>
+		<developer>Nintendo R&amp;D2 / Mitsubishi Electronics</developer>
+		<publisher>Nintendo</publisher>
+		<genre>Sports</genre>
+		<players>1-2</players>
+		<playcount>1</playcount>
+		<lastplayed>20261119T182318</lastplayed>
+	</game>
+	<game>
+		<path>./volleyball_variant_doubles.ctg</path>
+		<name>Volleyball Variant (Doubles)</name>
+		<desc>Volleyball with the zigzag blocks in mid-court, played in doubles. Doubles: each player turns one dial to move two linked paddles at once, one near the goal and one further up the field, which makes rallies faster and more chaotic. Speed (high/low) and the size of each player's paddle (large/small) can be set, as with the switches on the original console, and the winning score from 5 to 30 (15 by default). Play against a friend or against the computer (Easy, Normal or Hard).</desc>
+		<image>./media/emulationstation/volleyball_variant_doubles.png</image>
+		<video>./media/emulationstation/volleyball_variant_doubles.mp4</video>
+		<marquee>./media/emulationstation/volleyball_variant_doubles_logo.png</marquee>
+		<rating>0.55</rating>
+		<releasedate>19770608T000000</releasedate>
+		<developer>Nintendo R&amp;D2 / Mitsubishi Electronics</developer>
+		<publisher>Nintendo</publisher>
+		<genre>Sports</genre>
+		<players>1-2</players>
+		<playcount>1</playcount>
+		<lastplayed>20261119T182636</lastplayed>
+	</game>
+	<game>
+		<path>./volleyball_variant_singles.ctg</path>
+		<name>Volleyball Variant (Singles)</name>
+		<desc>A Color TV-Game 15 volleyball variation with red and green blocks staggered in zigzag across the middle of the court. Unlike in Tennis, these blocks can send the ball straight back to the side it came from and change its angle, so rallies are full of surprises. Speed (high/low) and the size of each player's paddle (large/small) can be set, as with the switches on the original console, and the winning score from 5 to 30 (15 by default). Play against a friend or against the computer (Easy, Normal or Hard).</desc>
+		<image>./media/emulationstation/volleyball_variant_singles.png</image>
+		<video>./media/emulationstation/volleyball_variant_singles.mp4</video>
+		<marquee>./media/emulationstation/volleyball_variant_singles_logo.png</marquee>
+		<rating>0.60</rating>
+		<releasedate>19770608T000000</releasedate>
+		<developer>Nintendo R&amp;D2 / Mitsubishi Electronics</developer>
+		<publisher>Nintendo</publisher>
+		<genre>Sports</genre>
+		<players>1-2</players>
+		<playcount>1</playcount>
+		<lastplayed>20261119T182535</lastplayed>
+	</game>
+</gameList>
